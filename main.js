@@ -117,11 +117,12 @@ function selectScene(id) {
   ambience.setScene(id);
   explorer?.setScene(id);
 }
+const placeImage = key => `${import.meta.env.BASE_URL}images/${key}.webp`;
 places.forEach((place,i)=>{
   const btn=document.createElement('button');
   btn.className='place-card';
   btn.setAttribute('aria-label','前往'+place.name);
-  btn.innerHTML='<img src="/images/'+place.key+'.webp" alt=""><span class="card-text"><span class="card-num">0'+(i+1)+'</span><strong>'+place.name+'</strong><small lang="en">'+place.en+'</small></span><span class="selected-dot"></span>';
+  btn.innerHTML='<img src="'+placeImage(place.key)+'" alt=""><span class="card-text"><span class="card-num">0'+(i+1)+'</span><strong>'+place.name+'</strong><small lang="en">'+place.en+'</small></span><span class="selected-dot"></span>';
   btn.onclick=()=>selectScene(i);
   cards.append(btn);
 });
@@ -162,7 +163,7 @@ $('#help').onclick=()=>{
 };
 $('#landmark').onclick=()=>{
   const p = places[sceneIndex];
-  showPanel(p.name,'<img class="dialog-photo" src="/images/'+p.key+'.webp" alt="'+p.name+'景觀重建"><div class="dialog-kicker">FIELD NOTES / 0'+(sceneIndex+1)+'</div><h2>'+p.name+'</h2><div class="english-title">'+p.en+'</div><p>'+p.text+'</p><button id="detail-walk" class="walk-button">'+icon('navigation')+'從此處漫遊'+icon('arrow-right')+'</button><a class="source-link" href="'+p.source+'" target="_blank" rel="noopener noreferrer">青島市文化旅遊資料 '+icon('arrow-up-right')+'</a>');
+  showPanel(p.name,'<img class="dialog-photo" src="'+placeImage(p.key)+'" alt="'+p.name+'景觀重建"><div class="dialog-kicker">FIELD NOTES / 0'+(sceneIndex+1)+'</div><h2>'+p.name+'</h2><div class="english-title">'+p.en+'</div><p>'+p.text+'</p><button id="detail-walk" class="walk-button">'+icon('navigation')+'從此處漫遊'+icon('arrow-right')+'</button><a class="source-link" href="'+p.source+'" target="_blank" rel="noopener noreferrer">青島市文化旅遊資料 '+icon('arrow-up-right')+'</a>');
   $('#detail-walk').onclick=()=>{panel.close(); explorer?.pause(false); walk();};
 };
 $('#open-map').onclick=()=>{
