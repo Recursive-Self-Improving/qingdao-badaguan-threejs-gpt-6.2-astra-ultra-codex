@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#171b19">
+  <meta name="description" content="在秋日的青島八大關，自由探索花石樓、銀杏大道與黃海海岸。">
+  <link rel="icon" href="/compass.svg" type="image/svg+xml">
+  <link rel="preload" href="/images/villa.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="/style.css">
+  <title>青島八大關 · 漫遊誌 Roam Atlas</title>
+</head>
+<body>
+  <main class="atlas">
+    <header class="masthead">
+      <div class="identity"><img src="/compass.svg" alt="" width="41" height="41"><div><strong>漫遊誌</strong><span>ROAM ATLAS</span></div></div>
+      <span class="header-divider"></span><div class="breadcrumb"><i data-icon="pin"></i>中國<span>/</span>山東<span>/</span><b>青島</b></div>
+      <div class="utilities">
+        <button id="sound" class="audio-button" aria-pressed="false" title="開啟環境音"><i data-icon="muted"></i><span>環境音</span><small>OFF</small></button>
+        <span class="tool-divider"></span>
+        <button id="fullscreen" class="icon-button" aria-label="進入全螢幕" title="全螢幕"><i data-icon="expand"></i></button>
+        <button id="help" class="icon-button" aria-label="操作指南" title="操作指南"><i data-icon="help"></i></button>
+      </div>
+    </header>
+    <section class="vista" aria-label="互動景觀">
+      <div class="photographs" aria-hidden="true">
+        <img class="scene-photo selected" src="/images/villa.webp" alt="">
+        <img class="scene-photo" src="/images/avenue.webp" alt="">
+        <img class="scene-photo" src="/images/shore.webp" alt="">
+      </div>
+      <canvas id="world" aria-label="3D 景觀，使用 WASD 移動，拖曳旋轉視角" tabindex="0"></canvas>
+      <div class="shading"></div>
+      <div class="scene-status"><span class="live-dot"></span><span id="mode-label">景觀預覽</span></div>
+      <div class="compass" aria-label="視角方位"><div id="compass-ruler"></div><span class="compass-pointer"></span></div>
+      <div class="season"><i data-icon="sun"></i><span>秋日晴空</span><b></b><span class="time">16:30</span></div>
+      <button id="landmark" class="landmark" aria-label="查看花石樓介紹"><span class="pin-bullseye"><i></i></span><span class="landmark-tag"><span id="marker-name">花石樓</span><i data-icon="arrow-up-right"></i></span></button>
+      <div class="place-intro">
+        <div class="eyebrow"><span></span>DESTINATION 01<b>/</b>QINGDAO</div>
+        <h1>青島八大關<span class="seal" aria-hidden="true">山海</span></h1>
+        <div class="english-title">Badaguan Scenic Area</div>
+        <button class="walk-button" id="walk"><i data-icon="navigation"></i><span>開始漫遊</span><i data-icon="arrow-right"></i></button>
+      </div>
+      <div class="walk-state"><i data-icon="navigation"></i>自由漫遊<button id="restore"><i data-icon="return"></i>返回取景點</button></div>
+      <button class="mini-map" id="open-map" aria-label="開啟區域地圖">
+        <span class="map-header"><span><i data-icon="map"></i>區域地圖</span><i data-icon="expand-small"></i></span>
+        <span id="map-drawing"></span>
+        <span class="mini-location"><i data-icon="pin"></i><span id="mini-name">花石樓</span></span>
+      </button>
+      <div id="joystick" class="joystick" aria-label="觸控搖桿"><span></span></div>
+    </section>
+    <nav class="scene-dock" aria-label="切換探索地點">
+      <div class="dock-title"><div><i data-icon="layers"></i><h2>場景導覽</h2></div><span>SCENE SELECT</span></div>
+      <div class="scene-cards" id="scene-cards"></div>
+    </nav>
+    <footer>
+      <div class="foot-status"><span class="live-dot"></span><span id="render-status">景觀已載入</span></div>
+      <div class="key-guide"><span><b class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></b>移動</span><i></i><span><b data-icon="mouse"></b>拖曳環視</span><i></i><span><b data-icon="scroll"></b>滾輪縮放</span></div>
+      <div class="coords"><i data-icon="crosshair"></i>36°03′ N<span>·</span>120°21′ E</div>
+    </footer>
+  </main>
+  <dialog id="panel"><div class="dialog-inner"><button id="close-panel" class="icon-button dialog-close" aria-label="關閉"><i data-icon="close"></i></button><div id="panel-body"></div></div></dialog>
+  <div id="message" role="status" aria-live="polite"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
